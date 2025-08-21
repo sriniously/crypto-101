@@ -1,0 +1,97 @@
+{
+  "id": "module-1",
+  "number": 1,
+  "title": "What Ever Are We Doing?",
+  "subtitle": "The Blockchain Revolution",
+  "description": "How did we reach decentralized solutions?",
+  "track": "foundation",
+  "objectives": [
+    "Understand the core problems that blockchain solves",
+    "Recognize why traditional digital systems need improvement",
+    "Build intuition for decentralized thinking through problem-solution progression"
+  ],
+  "duration": 60,
+  "prerequisites": [],
+  "lessons": [
+    {
+      "id": "lesson-1-1",
+      "number": "1.1",
+      "title": "Introductions - Your Digital Dependencies",
+      "description": "Let's count how many centralized services you used today",
+      "duration": 12,
+      "objectives": [
+        "Understand the digital dependency problem in Web2",
+        "Recognize centralized services in daily digital life",
+        "Build awareness of potential risks in centralized systems"
+      ],
+      "simulations": [
+        {
+          "id": "sim-1-1-1",
+          "title": "Digital Dependencies Tracker",
+          "component": "Web2VsWeb3",
+          "description": "Interactive tracker showing your daily centralized service dependencies"
+        }
+      ]
+    },
+    {
+      "id": "lesson-1-2",
+      "number": "1.2",
+      "title": "The Problem with Digital Money",
+      "description": "Experience the double-spending problem and understand why digital money needs special solutions",
+      "duration": 15,
+      "objectives": [
+        "Understand the double-spending problem",
+        "Experience why digital money is fundamentally different from physical money",
+        "Recognize the need for trusted intermediaries in traditional digital systems"
+      ],
+      "simulations": [
+        {
+          "id": "sim-1-2-1",
+          "title": "Double Spending Problem",
+          "component": "DoubleSpendSimulator",
+          "description": "Interactive demonstration of the digital money duplication problem"
+        }
+      ]
+    },
+    {
+      "id": "lesson-1-3",
+      "number": "1.3",
+      "title": "Bitcoin's Breakthrough Solution",
+      "description": "Hands-on blockchain demo showing peer-to-peer transfer and consensus",
+      "duration": 18,
+      "objectives": [
+        "Understand how blockchain solves the double-spending problem",
+        "Experience peer-to-peer transactions without intermediaries",
+        "Grasp the concept of distributed consensus"
+      ],
+      "simulations": [
+        {
+          "id": "sim-1-3-1",
+          "title": "Bitcoin Transaction Builder",
+          "component": "BitcoinTransactionBuilder",
+          "description": "Build and broadcast Bitcoin transactions to understand blockchain mechanics"
+        }
+      ]
+    },
+    {
+      "id": "lesson-1-4",
+      "number": "1.4",
+      "title": "The Smart Contract Revolution",
+      "description": "Preview programmable money and automated agreements",
+      "duration": 10,
+      "objectives": [
+        "Understand the concept of programmable money",
+        "Experience smart contracts through simple escrow example",
+        "Recognize the potential of automated agreements"
+      ],
+      "simulations": [
+        {
+          "id": "sim-1-4-1",
+          "title": "Smart Contract Escrow",
+          "component": "ContractComparison",
+          "description": "Compare traditional escrow vs automated smart contract escrow"
+        }
+      ]
+    }
+  ]
+}

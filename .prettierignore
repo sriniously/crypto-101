@@ -1,0 +1,49 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Cache directories
+.turbo/
+.swc/
+.cache/
+
+# Test coverage
+coverage/
+
+# Environment files
+.env*
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Lock files (optional - you can format these if preferred)
+package-lock.json
+yarn.lock
+bun.lockb
+
+# TypeScript build info
+*.tsbuildinfo
+
+# MDX files (optional - you can format these if preferred)
+# *.mdx

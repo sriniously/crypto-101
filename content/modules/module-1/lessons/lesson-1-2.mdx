@@ -1,0 +1,545 @@
+<Step id="step-0" title="The Digital Copy Problem" type="content">
+
+# Let's Talk About Digital Money
+
+Remember when you were a kid and someone asked you to trade baseball cards? You handed them your card, they handed you theirs. Simple, right?
+
+Now imagine trying to do that with a digital file. You send me a photo. Do I have it? Yes. But wait... do you still have it? Also yes. We've both got copies now.
+
+This is perfectly fine for photos and documents. But what about money?
+
+<ThinkAboutIt>
+  If I could copy-paste a dollar bill like I copy-paste a file, what would
+  happen to the economy?
+</ThinkAboutIt>
+
+## The Copy-Paste Economy
+
+Let me show you why digital money seemed impossible for so long. Try this thought experiment:
+
+You create a file on your computer called "dollar.txt" and write "$1" inside it:
+
+<CodeExample title="The Digital Money Problem" language="text">
+{`// File: dollar.txt
+$1
+
+// What you can do:
+
+1. Copy the file (Ctrl+C)
+2. Send copy to Alice → Alice has: $1
+3. Send copy to Bob → Bob has: $1
+4. Keep original → You still have: $1
+
+// Result: $1 became $3 out of thin air!
+// This breaks the entire concept of money`}
+
+</CodeExample>
+
+Congratulations! You've just turned $1 into $3. See the problem?
+
+<CommonMistake>
+  People often think: "Just make it so files can't be copied!" But that goes
+  against the fundamental nature of how computers work. Everything digital is
+  just data, and data can always be copied.
+</CommonMistake>
+
+</Step>
+
+<Step id="step-1" title="The Double-Spending Dilemma" type="simulation">
+
+<Simulation
+  component="DoubleSpendSimulator"
+  title="The Double-Spending Problem"
+  description="Try to spend the same digital dollar twice and see what happens"
+/>
+
+</Step>
+
+<Step id="step-2" title="How Banks 'Solved' This" type="content">
+
+## Enter the Middleman
+
+Banks figured out digital money decades ago. Their solution was simple definitely, but centralized
+
+<CodeExample title="How Banks Prevent Double-Spending" language="text">
+{`// Bank's Ledger (Single Source of Truth)
+Account_12345: $100.00
+Account_67890: $50.00
+
+// Transaction Request:
+"Send $20 from Account_12345 to Account_67890"
+
+// Bank's Process:
+
+1. CHECK: Does Account_12345 have $20? ✓ YES
+2. DEDUCT: Account_12345 = $100 - $20 = $80
+3. ADD: Account_67890 = $50 + $20 = $70
+4. RECORD: Transaction_ID_999 completed
+
+// Updated Ledger:
+Account_12345: $80.00
+Account_67890: $70.00
+
+// Why this works: Only ONE ledger, controlled by the bank`}
+
+</CodeExample>
+
+The bank acts as the trusted referee. They maintain one ledger that everyone believes. But this creates new problems
+
+<Comparison
+  title="Bank vs Ideal Digital Money"
+  leftTitle="Bank's Digital Money"
+  rightTitle="Ideal Digital Money"
+  items={[
+    {
+      label: 'Double-Spending Protection',
+      leftValue: '✅ No double-spending',
+      rightValue: '✅ No double-spending',
+    },
+    {
+      label: 'Transaction History',
+      leftValue: '✅ Clear transaction history',
+      rightValue: '✅ Clear transaction history',
+    },
+    {
+      label: 'Control',
+      leftValue: '❌ Bank controls your money',
+      rightValue: '✅ You control your money',
+    },
+    {
+      label: 'Privacy',
+      leftValue: '❌ Bank sees all transactions',
+      rightValue: '✅ Privacy when needed',
+    },
+    {
+      label: 'Account Security',
+      leftValue: '❌ Bank can freeze accounts',
+      rightValue: '✅ Nobody can freeze it',
+    },
+    {
+      label: 'Fees',
+      leftValue: '❌ Bank charges fees',
+      rightValue: '✅ Minimal fees',
+    },
+    {
+      label: 'Availability',
+      leftValue: '❌ Bank hours and holidays',
+      rightValue: '✅ Works 24/7/365',
+    },
+    {
+      label: 'Geographic Access',
+      leftValue: '❌ Geographic restrictions',
+      rightValue: '✅ Works globally',
+    },
+  ]}
+/>
+
+<KeyConcept title="The Trust Trade-off">
+  Traditional digital payments work by replacing the double-spending problem
+  with a trust problem. Instead of trusting math and code, you trust
+  institutions.
+</KeyConcept>
+
+</Step>
+
+<Step id="step-3" title="The Global Money Problem" type="content">
+
+## It Gets Worse Internationally
+
+Remember our bank solution? It barely works within one country. Try sending money internationally:
+
+<FlowDiagram
+  title="International Money Transfer Reality"
+  direction="horizontal"
+  steps={[
+    {
+      id: 'sender',
+      title: 'You (USA)',
+    },
+    {
+      id: 'your-bank',
+      title: 'Your Bank',
+    },
+    {
+      id: 'swift',
+      title: 'SWIFT Network',
+    },
+    {
+      id: 'correspondent',
+      title: 'Correspondent Bank',
+    },
+    {
+      id: 'forex',
+      title: 'Foreign Exchange',
+    },
+    {
+      id: 'recipient-bank',
+      title: "Recipient's Bank",
+    },
+    {
+      id: 'recipient',
+      title: 'Recipient (Japan)',
+      description:
+        "Time: 3-5 business days, Fees: $25-50 per transfer, Exchange rate: Bank's rate (usually bad)",
+    },
+  ]}
+/>
+
+### Real People, Real Problems
+
+<RealWorldExample>
+**Maria's Story** <CompanyLogo company="westernunion.com" className="w-5 h-5 inline ml-1" />
+
+Maria works in the US and sends money home to her family in the Philippines every month. Here's what happens:
+
+- She earns $1000 💵
+- Western Union fee: $30 📄
+- Exchange rate loss: ~$40 📈
+- Her family receives: $930 🏠
+- Time to arrive: 3 days ⏰
+
+That's $70 (7%) lost just to move her own money. Over a year, that's $840 gone to middlemen.
+
+</RealWorldExample>
+
+### The Unbanked Billions
+
+What if you don't have a bank account at all?
+
+<KeyConcept title="Financial Exclusion">
+**1.7 billion adults worldwide don't have bank accounts**
+
+Why?
+
+- No documentation
+- Not profitable for banks
+- Live too far from branches
+- Don't trust banks
+- Can't maintain minimum balances
+</KeyConcept>
+
+These people are locked out of the digital economy entirely. They can't:
+
+- Shop online
+- Build credit history
+- Save securely
+- Send money efficiently
+
+</Step>
+
+<Step id="step-4" title="Why Solving This Matters" type="checkpoint">
+
+## The Stakes Are Higher Than You Think
+
+Digital money is about human freedom and opportunity.
+
+<TabbedContent defaultValue="personal">
+  <TabsList>
+    <TabsTrigger value="personal">Personal Impact</TabsTrigger>
+    <TabsTrigger value="societal">Societal Impact</TabsTrigger>
+    <TabsTrigger value="economic">Economic Impact</TabsTrigger>
+  </TabsList>
+
+{" "}
+
+<TabsContent value="personal">
+  **For Individuals:** - Control over your own money - Access to global commerce
+  - Protection from hyperinflation - Financial privacy and freedom - Ability to
+  save and invest
+</TabsContent>
+
+{" "}
+
+<TabsContent value="societal">
+  **For Society:** - Financial inclusion for billions - Reduced corruption
+  (transparent money flows) - Faster disaster relief - Empowerment of creators
+  and entrepreneurs - Breaking monopolistic financial systems
+</TabsContent>
+
+  <TabsContent value="economic">
+    **For the Economy:** 
+    - 24/7 global markets 
+    - Programmable money (smart contracts) 
+    - Micro-transactions become viable 
+    - Reduced transaction costs 
+    - New business models
+  </TabsContent>
+</TabbedContent>
+
+<Checkpoint id="checkpoint-1" title="Understanding Check">
+Before we see how Bitcoin solved these problems, make sure you understand:
+
+1. Why can't we just copy-paste digital money?
+2. How do banks prevent double-spending?
+3. What are the downsides of the banking solution?
+4. Why does this problem matter globally?
+
+Take a moment to think about which of these problems affects you personally.
+
+</Checkpoint>
+
+</Step>
+
+<Step id="step-5" title="The Quest for Better Money" type="content">
+
+## What Would Ideal Digital Money Look Like?
+
+Before Bitcoin, hundreds of computer scientists tried to create digital money. They all faced the same impossible triangle:
+
+<FlowDiagram
+  title="The Impossible Triangle of Digital Money"
+  steps={[
+    {
+      id: 'decentralized',
+      title: 'Decentralized',
+      description: 'No central authority controls the system',
+    },
+    {
+      id: 'secure',
+      title: 'Secure',
+      description: 'Protected against fraud and hacking',
+    },
+    {
+      id: 'no-double-spend',
+      title: 'No Double-Spending',
+      description: "Can't spend the same money twice",
+    },
+    {
+      id: 'constraint',
+      title: 'The Problem',
+      description: "Pick two. You can't have all three.",
+      highlight: true,
+    },
+  ]}
+/>
+
+### The Failed Attempts
+
+Let's look at some brilliant failures
+
+<Timeline
+  title="Failed Attempts at Digital Money"
+  events={[
+    {
+      id: 'ecash',
+      date: '1983',
+      title: "David Chaum's eCash",
+      description: (
+        <>
+          ✅ Anonymous digital payments
+          <br />
+          <br />
+          ❌ Required a central bank
+          <br />
+          <br />
+          Failed when his company went bankrupt
+        </>
+      ),
+      category: 'early',
+    },
+    {
+      id: 'hashcash',
+      date: '1997',
+      title: 'HashCash',
+      description: (
+        <>
+          ✅ Proof-of-work concept
+          <br />
+          <br />
+          ❌ No way to transfer between people
+          <br />
+          <br />
+          Became inspiration for Bitcoin mining
+        </>
+      ),
+      category: 'early',
+    },
+    {
+      id: 'bmoney',
+      date: '1998',
+      title: 'B-Money',
+      description: (
+        <>
+          ✅ Distributed ledger idea
+          <br />
+          <br />
+          ❌ No practical implementation
+          <br />
+          <br />
+          Theoretical framework only
+        </>
+      ),
+      category: 'early',
+    },
+    {
+      id: 'bitgold',
+      date: '2005',
+      title: 'BitGold',
+      description: (
+        <>
+          ✅ Decentralized value creation
+          <br />
+          <br />
+          ❌ Vulnerable to Sybil attacks
+          <br />
+          <br />
+          Never implemented
+        </>
+      ),
+      category: 'early',
+    },
+  ]}
+/>
+
+Each attempt got us closer, but none could solve the fundamental problem: **How do you prevent double-spending without a central authority?**
+
+<ProTip>
+  We can't consider these failures, they were stepping stones. Bitcoin's genius
+  wasn't inventing new technology, it was combining existing ideas in a novel
+  way.
+</ProTip>
+
+</Step>
+
+<Step id="step-6" title="Knowledge Check" type="quiz">
+
+<Quiz
+  id="lesson-1-2-quiz"
+  title="Digital Money Problems"
+  description="Test your understanding of why digital money is challenging"
+  questions={[
+    {
+      id: 'q1',
+      type: 'single',
+      question: "What is the 'double-spending problem' in digital money?",
+      options: [
+        {
+          id: 'a',
+          text: 'Spending twice as much as you intended',
+          correct: false,
+        },
+        {
+          id: 'b',
+          text: 'Being able to copy and spend the same digital money multiple times',
+          correct: true,
+        },
+        {
+          id: 'c',
+          text: 'Having to pay twice for international transfers',
+          correct: false,
+        },
+        { id: 'd', text: 'Banks charging double fees', correct: false },
+      ],
+      explanation:
+        'The double-spending problem occurs because digital files can be copied. Without a solution, the same digital money could be spent multiple times, making it worthless.',
+      points: 1,
+      difficulty: 'easy',
+    },
+    {
+      id: 'q2',
+      type: 'single',
+      question:
+        'How do traditional banks prevent double-spending of digital money?',
+      options: [
+        { id: 'a', text: 'By making money impossible to copy', correct: false },
+        { id: 'b', text: 'By using special encryption', correct: false },
+        {
+          id: 'c',
+          text: 'By maintaining a centralized ledger they control',
+          correct: true,
+        },
+        { id: 'd', text: 'By limiting transfer amounts', correct: false },
+      ],
+      explanation:
+        'Banks solve double-spending by being the single source of truth. They maintain one central ledger that tracks all balances and transactions.',
+      points: 1,
+      difficulty: 'easy',
+    },
+    {
+      id: 'q3',
+      type: 'multiple',
+      question:
+        'What are the main problems with bank-controlled digital money? (Select all that apply)',
+      options: [
+        { id: 'a', text: 'Banks can freeze your accounts', correct: true },
+        {
+          id: 'b',
+          text: 'High fees for international transfers',
+          correct: true,
+        },
+        { id: 'c', text: 'Digital files can be copied', correct: false },
+        {
+          id: 'd',
+          text: 'Limited operating hours and geographic restrictions',
+          correct: true,
+        },
+        {
+          id: 'e',
+          text: "1.7 billion people don't have access to banks",
+          correct: true,
+        },
+      ],
+      explanation:
+        'Bank-controlled money has many limitations: censorship, high fees, limited access hours, geographic restrictions, and exclusion of the unbanked population.',
+      points: 2,
+      difficulty: 'medium',
+    },
+    {
+      id: 'q4',
+      type: 'single',
+      question:
+        'Why did previous attempts at digital money (like eCash and BitGold) fail?',
+      options: [
+        { id: 'a', text: 'They were too complicated to use', correct: false },
+        {
+          id: 'b',
+          text: "They couldn't solve the double-spending problem without centralization",
+          correct: true,
+        },
+        { id: 'c', text: "The internet wasn't fast enough", correct: false },
+        { id: 'd', text: 'Governments banned them', correct: false },
+      ],
+      explanation:
+        "Earlier digital money attempts either required central authorities (defeating the purpose) or couldn't prevent double-spending in a decentralized way. Bitcoin was the first to solve both.",
+      points: 1,
+      difficulty: 'medium',
+    },
+  ]}
+  passingScore={70}
+  maxAttempts={3}
+/>
+
+</Step>
+
+<Step id="step-7" title="Setting the Stage" type="content">
+
+## The Stage is Set
+
+You now understand the seemingly impossible challenge
+
+<KeyTakeaway>
+We need digital money that:
+1. Can't be copied (no double-spending)
+2. Doesn't require trusting any company or government
+3. Works globally, 24/7, for everyone
+4. Has minimal fees
+5. Can't be censored or frozen
+
+For 30 years, this seemed impossible.
+
+</KeyTakeaway>
+
+Then, in 2008, during the worst financial crisis in generations, a mysterious figure named Satoshi Nakamoto published a paper that changed the whole course.
+
+[**"Bitcoin: A Peer-to-Peer Electronic Cash System"**](https://bitcoin.org/bitcoin.pdf) <Web3Icon type="bitcoin" className="w-6 h-6 inline ml-2 text-orange-500" />
+
+The solution was revolutionary, combining existing technologies in a way nobody had imagined. And it actually worked.
+
+<Discussion>
+Ready to see how Satoshi cracked the code that stumped computer scientists for decades? <Web3Icon type="bitcoin" className="w-5 h-5 inline mx-1 text-orange-500" />
+
+In our next lesson, we'll explore Bitcoin's breakthrough solution and why it's considered one of the most important inventions of the 21st century.
+
+</Discussion>
+
+</Step>

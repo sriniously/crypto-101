@@ -1,0 +1,500 @@
+<Step id="step-0" title="Welcome to Web3" type="content">
+
+# Hello there! Let's talk about your digital life
+
+We'll be spending some time together, understanding the mysteries of blockchain development.
+
+Think about this morning. You probably woke up, grabbed your phone, and without even thinking about it, handed control of your life to a dozen different companies.
+
+## Your Morning Digital Ritual
+
+Let me guess your routine:
+
+You checked your bank balance on an app. <CompanyLogo company="jpmorganchase.com" className="w-5 h-5 inline mx-1" /> That's JPMorgan Chase or <CompanyLogo company="bankofamerica.com" className="w-5 h-5 inline mx-1" /> Bank of America holding your money, deciding if and when you can access it.
+
+You scrolled through emails. <CompanyLogo company="google.com" className="w-5 h-5 inline mx-1 text-blue-600" /> That's Google reading every word, building a profile of you to sell to advertisers.
+
+You posted a photo of your breakfast. <CompanyLogo company="facebook.com" className="w-5 h-5 inline mx-1 text-blue-500" /> That's Meta owning your memories, using them to keep you scrolling.
+
+You bought something online. <CompanyLogo company="amazon.com" className="w-5 h-5 inline mx-1 text-orange-500" /> That's Amazon tracking your purchases, predicting your behavior.
+
+You listened to your favorite playlist. <CompanyLogo company="spotify.com" className="w-5 h-5 inline mx-1 text-green-500" /> That's Spotify deciding what artists deserve to be heard, taking most of the revenue.
+
+## The Pattern You Can't Unsee
+
+This is the point I want you to see.
+
+<KeyConcept title="Digital Dependency">
+Every single digital action you took went through a company that:
+
+1. **Controls your account** - They can lock you out anytime
+2. **Owns your data** - They can sell it or lose it
+3. **Sets the rules** - They can change terms without asking
+4. **Takes a cut** - Through fees, ads, or data harvesting
+</KeyConcept>
+
+You might be thinking, "So what? It works fine for me." And maybe it does. Today. But what happens when it doesn't?
+
+</Step>
+
+<Step id="step-1" title="The Web2 Dependency Problem" type="content">
+
+## When "Fine" is not fine
+
+Let me tell you a few stories. Real ones (kind of).
+
+<RealWorldExample>
+**Sarah's Story** <CompanyLogo company="google.com" className="w-4 h-4 inline ml-1 text-red-500" />
+
+Sarah ran a small online business for five years. One morning, Google suspended her account for "suspicious activity." No warning. No explanation. Just gone.
+
+- Her email: Gone
+- Her documents: Gone
+- Her customer contacts: Gone
+- Her business: Devastated
+
+Google's appeals process? An automated response saying the decision was final.
+
+</RealWorldExample>
+
+<RealWorldExample>
+**David's Story** <CompanyLogo company="paypal.com" className="w-4 h-4 inline ml-1 text-blue-600" />
+
+David was traveling abroad when PayPal froze his account. Their fraud algorithm didn't like his location. He couldn't:
+
+- Access his money
+- Pay for his hotel
+- Buy a flight home
+- Reach a human for help
+
+He was stranded for three days while PayPal "investigated."
+
+</RealWorldExample>
+
+## The Truth is Uncomfortable
+
+Here's what your digital life really looks like:
+
+<FlowDiagram
+  title="Your Digital Life Reality"
+  steps={[
+    {
+      id: 'step-1',
+      title: 'You → Create Account → Company Controls Everything',
+    },
+    {
+      id: 'step-2',
+      title: 'Bank Account: You deposit $1000',
+      description:
+        'Bank owns the account, sets withdrawal limits, can freeze your funds, tracks every transaction, charges fees for YOUR money',
+    },
+    {
+      id: 'step-3',
+      title: 'Email Account: You write personal emails',
+      description:
+        'Google scans your emails, serves you ads based on content, can terminate your account, your emails become their data',
+    },
+    {
+      id: 'step-4',
+      title: 'Social Media: You share your life',
+      description:
+        'Platform owns your content, algorithm decides who sees it, they profit from your connections, you can be deplatformed instantly',
+    },
+  ]}
+/>
+
+<Warning>
+  You don't actually "own" any of your digital assets. You have permission to
+  use them. That permission can be revoked at any time, for any reason, with no
+  recourse.
+</Warning>
+
+</Step>
+
+<Step id="step-2" title="Web3: The Permission-Less Revolution" type="content">
+
+## There's Another Way
+
+What if I told you that right now, as you're reading this, thousands of people are using a completely different internet? One where:
+
+Your money <Web3Icon type="bitcoin" className="w-5 h-5 inline mx-1 text-orange-500" /> exists without banks. Not "stored by" banks. Not "managed by" banks. It simply exists, like cash in your pocket, but digital.
+
+Your identity works everywhere without creating new accounts. One digital identity that you control, that works across thousands of applications.
+
+Your data belongs to you, not tech companies. You decide who sees it, who uses it, and you get paid if someone wants to use it.
+
+Your applications <Web3Icon type="ethereum" className="w-5 h-5 inline mx-1 text-blue-500" /> can't be shut down by anyone. No company can pull the plug. No government can flip a switch. If the internet exists, these apps exist.
+
+## Your First Glimpse of Web3
+
+We are not talking about science fiction here I promise. This is happening right now. It's called Web3, and it's built on a simple but revolutionary idea:
+
+<KeyConcept title="The Core Innovation">
+  Instead of trusting companies with your digital life, you trust mathematics
+  and code that no single entity controls.
+</KeyConcept>
+
+### One Key for Everything
+
+In the old web, your digital identity looks like this:
+
+<Comparison
+  title="Digital Identity Comparison"
+  leftTitle="Web2 - The Old Way"
+  rightTitle="Web3 - The New Way"
+  items={[
+    {
+      label: 'Account Management',
+      leftValue:
+        'Gmail account + password, Facebook account + password, Bank account + PIN + security questions, Amazon account + password, Netflix account + password, Spotify account + password, 50+ more accounts...',
+      rightValue: 'One cryptographic wallet',
+    },
+    {
+      label: 'User Experience',
+      leftValue:
+        'Password managers, forgotten logins, account recovery nightmares',
+      rightValue:
+        'Works on every Web3 application, No passwords to remember, No accounts to create',
+    },
+    {
+      label: 'Data Control',
+      leftValue: 'Companies storing your data',
+      rightValue: 'No companies storing your data, No permission needed',
+    },
+    {
+      label: 'Outcome',
+      leftValue: 'Digital dependency',
+      rightValue: 'You own your digital identity',
+    },
+  ]}
+/>
+
+### How Your Wallet Works
+
+<Web3Icon type="metamask" className="w-32 h-32 mx-auto mb-10" />
+
+
+<FlowDiagram
+  title="Think of your Web3 wallet like a magical key that:"
+  steps={[
+    {
+      id: 'wallet-identity',
+      title: 'Proves who you are',
+      description: 'Without revealing your name',
+    },
+    {
+      id: 'wallet-money',
+      title: 'Holds your money',
+      description: 'Without a bank',
+    },
+    {
+      id: 'wallet-data',
+      title: 'Stores your data',
+      description: 'Without a cloud provider',
+    },
+    {
+      id: 'wallet-transactions',
+      title: 'Signs transactions',
+      description: 'Without intermediaries',
+    },
+    {
+      id: 'wallet-universal',
+      title: 'Works everywhere',
+      description: 'Without creating accounts',
+    },
+  ]}
+/>
+
+The technical magic behind this is public key cryptography, but you don't need to understand the math. You just need to understand the outcome: **true digital ownership**.
+
+</Step>
+
+<Step id="step-3" title="Experience the Difference" type="simulation">
+
+## Time to See It In Action
+
+Enough talk. Let's actually experience the difference between Web2 and Web3. This simulation will show you:
+
+1. How many companies control your current digital life
+2. What each company knows about you
+3. What they can do with that control
+4. How Web3 alternatives work differently
+
+<Simulation
+  component="Web2VsWeb3"
+  title="Web2 vs Web3 Dependency Tracker"
+  description="Discover how many centralized services control your digital life and explore Web3 alternatives"
+/>
+
+</Step>
+
+<Step id="step-4" title="A Mental Shift Exercise" type="checkpoint">
+
+## Learning to Think in Web3
+
+The hardest part about understanding Web3 isn't the technology. It's changing how you think about digital ownership and control. Let's practice.
+
+<TabbedContent defaultValue="money">
+  <TabsList>
+    <TabsTrigger value="money">Money</TabsTrigger>
+    <TabsTrigger value="identity">Identity</TabsTrigger>
+    <TabsTrigger value="data">Data</TabsTrigger>
+    <TabsTrigger value="apps">Applications</TabsTrigger>
+  </TabsList>
+
+
+<TabsContent value="money">
+  **How you think about money:**
+
+Web2: "I have $100 in my Chase account" <CompanyLogo company="chase.com" className="w-4 h-4 inline ml-1" />
+
+- Chase holds your money
+- Chase decides if you can access it
+- Chase can freeze it
+- Chase sees every transaction
+
+Web3: "I control private keys to $100 worth of digital assets" <Web3Icon type="bitcoin" className="w-4 h-4 inline ml-1 text-orange-500" />
+
+- You hold your money directly
+- Only you can access it
+- No one can freeze it
+- Transactions are pseudonymous
+</TabsContent>
+
+{" "}
+
+<TabsContent value="identity">
+  **How you think about identity:**
+
+Web2: "I'll log in with my email and password" <CompanyLogo company="google.com" className="w-4 h-4 inline ml-1 text-blue-600" />
+
+- Company stores your credentials
+- Company can lock you out
+- Company can be hacked
+- You need different logins everywhere
+
+Web3: "I'll connect my wallet" <Web3Icon type="ethereum" className="w-4 h-4 inline ml-1 text-blue-500" />
+
+- You control your identity
+- No passwords stored anywhere
+- Cryptographically secure
+- One identity works everywhere
+</TabsContent>
+
+{" "}
+
+<TabsContent value="data">
+  **How you think about data:**
+
+Web2: "My photos are backed up to Google Photos" <CompanyLogo company="google.com" className="w-4 h-4 inline ml-1 text-blue-600" />
+
+- Google stores your photos
+- Google can access them
+- Google can delete them
+- Google uses them for AI training
+
+Web3: "My photos are stored on IPFS with my encryption" 🌐
+
+- Distributed storage (no single point of failure)
+- Only you have the decryption keys
+- Cannot be deleted by anyone
+- You control who can access them
+
+</TabsContent>
+
+    <TabsContent value="apps">
+    **How you think about applications:**
+
+Web2: "I hope Instagram doesn't shut down" <CompanyLogo company="instagram.com" className="w-4 h-4 inline ml-1 text-pink-500" />
+
+- Company controls the app
+- Can change or shut down anytime
+- Can ban users arbitrarily
+- Owns all the network effects
+
+Web3: "This protocol will run as long as Ethereum exists" <Web3Icon type="ethereum" className="w-4 h-4 inline ml-1 text-blue-500" />
+
+- No company controls it
+- Code is immutable once deployed
+- No arbitrary bans possible
+- Users own the network effects
+
+</TabsContent>
+</TabbedContent>
+
+<Checkpoint id="checkpoint-1" title="Understanding Check">
+The shift from Web2 to Web3 is fundamentally about moving from:
+
+**"Company X lets me..." → "I can..."**
+
+Before we continue, think about this: Which aspect of your digital life would you most want to truly own? Your money? Your identity? Your data? Your social connections?
+
+Take a moment to imagine what true ownership of that would mean for you.
+
+</Checkpoint>
+
+</Step>
+
+<Step id="step-5" title="Knowledge Check" type="quiz">
+
+<Quiz
+  id="lesson-1-1-quiz"
+  title="Web2 vs Web3 Understanding"
+  description="Let's check if you've grasped the fundamental shift from Web2 to Web3"
+  questions={[
+    {
+      id: 'q1',
+      type: 'single',
+      question:
+        "Sarah's Google account was suspended and she lost access to 5 years of business emails. In Web3, why couldn't this happen?",
+      options: [
+        {
+          id: 'a',
+          text: 'Web3 companies are nicer than Google',
+          correct: false,
+        },
+        { id: 'b', text: 'Web3 uses better passwords', correct: false },
+        {
+          id: 'c',
+          text: 'You control your own data with cryptographic keys that no company can revoke',
+          correct: true,
+        },
+        { id: 'd', text: "Web3 doesn't use email", correct: false },
+      ],
+      explanation:
+        'In Web3, you hold the cryptographic keys to your data and identity. No company can lock you out because no company controls your keys. Only you do.',
+      points: 1,
+      difficulty: 'easy',
+    },
+    {
+      id: 'q2',
+      type: 'single',
+      question:
+        "Your friend says: 'I have $1000 in my bank account.' How would you express this same idea in Web3 terms?",
+      options: [
+        { id: 'a', text: 'I have $1000 in a blockchain bank', correct: false },
+        {
+          id: 'b',
+          text: 'I control private keys to $1000 worth of digital assets',
+          correct: true,
+        },
+        { id: 'c', text: 'I have $1000 in cryptocurrency', correct: false },
+        { id: 'd', text: 'I have $1000 in my Web3 account', correct: false },
+      ],
+      explanation:
+        "In Web3, you don't have money 'in' an account controlled by someone else. You directly control digital assets through private keys that only you possess.",
+      points: 1,
+      difficulty: 'medium',
+    },
+    {
+      id: 'q3',
+      type: 'multiple',
+      question:
+        'Which of these are real problems people face with Web2 services? (Select all that apply)',
+      options: [
+        {
+          id: 'a',
+          text: 'PayPal freezing funds while traveling abroad',
+          correct: true,
+        },
+        {
+          id: 'b',
+          text: 'Google suspending accounts without human support',
+          correct: true,
+        },
+        { id: 'c', text: 'Having to remember one password', correct: false },
+        {
+          id: 'd',
+          text: 'Facebook deciding what content you can see',
+          correct: true,
+        },
+        {
+          id: 'e',
+          text: 'Banks charging fees to access your own money',
+          correct: true,
+        },
+      ],
+      explanation:
+        'These are all real examples of how centralized control in Web2 affects users daily. Web3 aims to eliminate these pain points by removing centralized control.',
+      points: 2,
+      difficulty: 'easy',
+    },
+    {
+      id: 'q4',
+      type: 'single',
+      question:
+        "What's the fundamental difference in how you access services in Web2 vs Web3?",
+      options: [
+        { id: 'a', text: 'Web3 is faster than Web2', correct: false },
+        {
+          id: 'b',
+          text: 'Web2 requires creating accounts with companies; Web3 uses one wallet you control',
+          correct: true,
+        },
+        { id: 'c', text: 'Web3 is free; Web2 costs money', correct: false },
+        {
+          id: 'd',
+          text: 'Web2 is for old people; Web3 is for young people',
+          correct: false,
+        },
+      ],
+      explanation:
+        'Web2 requires creating separate accounts with each service (they control access). Web3 uses one cryptographic wallet that you control, which works everywhere without creating new accounts.',
+      points: 1,
+      difficulty: 'medium',
+    },
+  ]}
+  passingScore={70}
+  maxAttempts={3}
+/>
+
+</Step>
+
+<Step id="step-6" title="What We've Discovered" type="content">
+
+## You've Taken the Red Pill 💊
+
+Congratulations. You now see the matrix.
+
+You understand something that 99% of internet users don't: **the current web is built on digital feudalism**. We're all digital serfs, farming data for tech lords who grant us permission to use "our" accounts.
+
+## What You've Learned
+
+<KeyTakeaway>
+
+✓ **The hidden cost of "free" services** - You're not the customer, you're the product.
+
+✓ **The illusion of digital ownership** - You don't own anything in Web2, you rent access.
+
+✓ **The Web3 alternative** - True ownership through cryptography, not corporate permission.
+
+✓ **The mental shift required** - From "they let me" to "I can".
+
+</KeyTakeaway>
+
+## We are not done yet
+
+Understanding the problem is only the beginning. You might be wondering:
+
+"This sounds great in theory, but how does it actually work? How can digital money exist without banks? How can applications run without companies?"
+
+Excellent questions. And that's exactly what we'll explore next.
+
+## Coming Up: The Problem with Digital Money
+
+In our next lesson, we'll tackle the fundamental challenge that stopped digital money from existing for 30 years:
+
+**If everything digital can be copied, how do you create digital money that can't be counterfeited?**
+
+This question stumped computer scientists for decades. For the first time, we have a solution.
+
+<Discussion>
+Before moving on, take a moment to imagine: If you could redesign the internet from scratch, putting users in control instead of companies, what would you change first?
+
+Your money <Web3Icon type="bitcoin" className="w-5 h-5 inline mx-1 text-orange-500" />? Your identity? Your data? Your social connections?
+
+Hold that thought. We're about to see how Bitcoin tackled the first one.
+
+</Discussion>
+
+</Step>

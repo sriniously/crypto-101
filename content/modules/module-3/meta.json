@@ -1,0 +1,37 @@
+{
+  "id": "module-3",
+  "number": 3,
+  "title": "Smart Contracts",
+  "subtitle": "Programmable Money",
+  "description": "Introduction to smart contracts and decentralized applications",
+  "track": "development",
+  "objectives": [
+    "Understand smart contract fundamentals",
+    "Write simple Solidity contracts",
+    "Deploy and interact with contracts"
+  ],
+  "duration": 75,
+  "prerequisites": ["module-1", "module-2"],
+  "lessons": [
+    {
+      "id": "lesson-3-1",
+      "number": "3.1",
+      "title": "Your First Smart Contract",
+      "description": "Write and deploy a simple smart contract",
+      "duration": 25,
+      "objectives": [
+        "Write a basic smart contract",
+        "Understand contract deployment",
+        "Interact with deployed contracts"
+      ],
+      "simulations": [
+        {
+          "id": "sim-3-1-1",
+          "title": "Solidity Playground",
+          "component": "SolidityPlayground",
+          "description": "Write, compile, and test smart contracts"
+        }
+      ]
+    }
+  ]
+}

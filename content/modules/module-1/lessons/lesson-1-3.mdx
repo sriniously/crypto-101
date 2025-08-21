@@ -1,0 +1,453 @@
+<Step id="step-0" title="The Bitcoin Breakthrough" type="content">
+
+# Bitcoin's Impossible Solution
+
+_On October 31, 2008, someone using the name Satoshi Nakamoto published a 9-page paper that changed how we look at money forever._
+
+Halloween 2008. While people were dressing up as ghosts, someone ghostly was about to revolutionize money. A mysterious person called Satoshi Nakamoto published a paper with a boring title: "[Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/bitcoin.pdf)."
+
+This paper solved what computer scientists called the **Byzantine Generals Problem**. Sounds fancy, but it's really about trust.
+
+<RealWorldExample>
+**The Army Problem**
+
+Imagine you're a general with your army surrounding a city. You have allies, but you can only communicate through messengers. Some of your allies might be traitors. How do you coordinate an attack when you can't trust everyone?
+
+This is exactly the problem with digital money. How do you get thousands of strangers on the internet to agree on who owns what, when some of them might be trying to cheat?
+
+</RealWorldExample>
+
+## The "Impossible" Problem
+
+Let's revisit our digital money dilemma. You learned in the previous lesson that:
+
+- **Digital files can be copied infinitely** (remember the $1 file problem?)
+- **Banks solve this but become powerful gatekeepers**
+- **How do you create digital scarcity without giving someone god-like power?**
+
+For decades, computer scientists said it was impossible. You needed a trusted third party. Period.
+
+Satoshi's answer was: **What if EVERYONE keeps the ledger?**
+
+Instead of one bank keeping track of balances, what if thousands of people kept identical copies? When someone wants to spend money, the network checks: "Do they actually have it?"
+
+<KeyConcept title="Distributed Consensus">
+  Instead of asking "Who do we trust?", Bitcoin asks "How can strangers agree without trusting
+  each other?"
+</KeyConcept>
+
+</Step>
+
+<Step id="step-1" title="Build Your First Bitcoin Transaction" type="simulation">
+
+# Let's Send Some Bitcoin! ⚡
+
+Experience Bitcoin's peer-to-peer magic. No banks, no intermediaries—just math and consensus.
+
+<Simulation component="BitcoinTransactionBuilder" />
+
+**What you just did:**
+
+- Created a transaction without asking anyone's permission
+- The network verified you have the Bitcoin to spend
+- Thousands of computers agreed on the transaction's validity
+- No single entity could stop or reverse it
+
+_This is **trustless** money in action!_
+
+</Step>
+
+<Step id="step-2" title="How Does Everyone Agree?" type="content">
+
+# The Consensus Mechanism
+
+Here's an interesting question: **How do thousands of strangers on the internet agree on truth?**
+
+Think about it. You can't even get your family to agree on what to watch on Netflix, but Bitcoin gets thousands of people to agree on every transaction, every 10 minutes, automatically.
+
+## The Beautiful Process
+
+Let's say you want to send 1 Bitcoin to your friend Alice.
+
+<CodeExample title="Bitcoin Transaction Walkthrough" language="javascript">
+{`// Step 1: Create Transaction
+const transaction = {
+  from: "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",  // Your wallet
+  to: "1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2",    // Alice's wallet
+  amount: 1.0,                                 // 1 Bitcoin
+  fee: 0.0001,                                // Miner fee
+  signature: "digital_signature_proof_here"    // Proves you own the Bitcoin
+};
+
+// Step 2: Network Validation
+network.validate(transaction) {
+// Check: Does sender have 1 Bitcoin?
+if (getBalance(transaction.from) >= transaction.amount) {
+return "VALID - Adding to mempool";
+} else {
+return "INVALID - Insufficient balance";
+}
+}
+
+// Step 3: Mining Competition
+miners.compete() {
+// Thousands of miners race to solve:
+// hash(previous_block + transactions + nonce) = 000000...
+// First to find valid nonce wins!
+}
+
+// Step 4: Block Creation
+const newBlock = {
+transactions: [transaction, ...others],
+previous_hash: "000000abc123...",
+nonce: 2847561, // The winning number
+timestamp: Date.now()
+};
+
+// Step 5: Network Consensus
+// All nodes update their blockchain copy
+blockchain.addBlock(newBlock);
+// Alice now has the Bitcoin!`}
+
+</CodeExample>
+
+<FlowDiagram
+  title="Bitcoin Transaction Process"
+  steps={[
+    {
+      id: 'step-1',
+      title: 'Transaction Created',
+      description: 'You want to send 1 BTC to Alice',
+    },
+    {
+      id: 'step-2',
+      title: 'Network Validates',
+      description: 'Thousands of nodes verify you have the Bitcoin',
+    },
+    {
+      id: 'step-3',
+      title: 'Miners Compete',
+      description: 'Race to solve mathematical puzzle',
+    },
+    {
+      id: 'step-4',
+      title: 'Block Added',
+      description: 'Winner adds transaction to blockchain',
+    },
+    {
+      id: 'step-5',
+      title: 'Network Updates',
+      description: "Everyone's ledger now shows Alice has your Bitcoin",
+    },
+  ]}
+/>
+
+**The genius**: No king, no bank, no government decides what's valid. Pure math and economic incentives create agreement.
+
+<ThinkAboutIt>
+  This process happens about every 10 minutes, 24/7, since 2009. Millions of
+  transactions, zero downtime, no central control. How is this possible?
+</ThinkAboutIt>
+
+</Step>
+
+<Step id="step-3" title="Mining: The Security Game" type="content">
+
+# Mining: The Security Game
+
+_"Bitcoin miners aren't digging for gold—they're competing to be the official historian of money."_
+
+Let me clear up a common confusion. When people hear "Bitcoin mining," they picture people with pickaxes digging underground. The reality is much cooler.
+
+## What Miners Really Do
+
+Think of miners as **competitive accountants** with supercomputers.
+
+<CodeExample title="Bitcoin Mining Process" language="javascript">
+{`// Mining: The Mathematical Race
+function mineBlock(transactions, previousHash) {
+  let nonce = 0;
+  let hash;
+  
+  // Keep trying until we find a hash starting with zeros
+  while (true) {
+    const blockData = transactions + previousHash + nonce;
+    hash = sha256(blockData);
+    
+    // Success! Hash starts with required zeros
+    if (hash.startsWith("000000")) {
+      console.log(\`Found valid hash: \${hash}\`);
+      console.log(\`Winning nonce: \${nonce}\`);
+      console.log(\`Attempts made: \${nonce}\`);
+      return { hash, nonce };
+    }
+    
+    nonce++; // Try again with different nonce
+  }
+}
+
+// Example output:
+// Attempt 1: hash = "abc123def456" ❌ (no leading zeros)
+// Attempt 2: hash = "def789abc012" ❌ (no leading zeros)
+// ...
+// Attempt 2,847,561: hash = "000000a1b2c3" ✅ WINNER!
+//
+// This miner gets:
+// - 6.25 new Bitcoin reward
+// - All transaction fees in the block
+// - The right to write the next page of history`}
+
+</CodeExample>
+
+**Their Job Description:**
+
+- Collect pending transactions from around the world
+- Bundle them into a "block" (like a page in a ledger)
+- Solve an incredibly difficult math puzzle
+- First to solve it gets to add their block to the blockchain
+- Earn brand new Bitcoin as payment (currently 6.25 BTC per block!)
+
+<RealWorldExample>
+**The Lottery Analogy**
+
+Imagine a lottery where instead of buying tickets, you solve math problems. The harder you work, the more chances you get to win. But there is a twist, when you win, you don't just get money, you get to write the next page in humanity's financial record book.
+
+That's Bitcoin mining.
+
+</RealWorldExample>
+
+## The Brilliant Security Design
+
+Why would anyone spend huge amounts of electricity to solve math problems? Because Satoshi designed a system where honesty pays better than cheating.
+
+**Cost to Attack Bitcoin:**
+To successfully cheat, you'd need to control over 51% of all Bitcoin's computing power. Today, that would require:
+
+- Billions of dollars in specialized computers
+- More electricity than entire countries use
+- All while racing against the rest of the network
+
+**The Economic Reality:**
+It's far more profitable to play by the rules and earn honest mining rewards than to spend billions trying to cheat.
+
+**The Immutability Factor:**
+Each block is mathematically linked to the previous one. Here's what the blockchain actually looks like:
+
+<CodeExample title="Blockchain Structure" language="javascript">
+{`// The Bitcoin Blockchain (Simplified)
+const blockchain = [
+  {
+    blockNumber: 1,
+    previousHash: "0000000000000000",
+    transactions: ["Genesis Block"],
+    hash: "000000abc123def4",
+    nonce: 2083236893
+  },
+  {
+    blockNumber: 2,
+    previousHash: "000000abc123def4",  // Links to previous block
+    transactions: [
+      "Alice sends 5 BTC to Bob",
+      "Carol sends 2 BTC to Dave"
+    ],
+    hash: "000000def456abc7",
+    nonce: 2573991275
+  },
+  {
+    blockNumber: 3,
+    previousHash: "000000def456abc7",  // Links to block 2
+    transactions: [
+      "Bob sends 1 BTC to Eve"
+    ],
+    hash: "000000ghi789jkl0",
+    nonce: 1839475829
+  }
+];
+
+// To change Block 1, you'd need to:
+// 1. Recalculate Block 1's hash (millions of attempts)
+// 2. This changes Block 2's previousHash, so recalculate Block 2
+// 3. This changes Block 3's previousHash, so recalculate Block 3
+// 4. Do this faster than the entire network!
+//
+// Result: Nearly impossible!`}
+
+</CodeExample>
+
+Changing old transactions becomes exponentially harder over time.
+
+<Comparison
+  title="Security Models"
+  leftTitle="Traditional Banking Security"
+  rightTitle="Bitcoin Security"
+  items={[
+    {
+      label: 'Protection Method',
+      leftValue: 'Firewalls and passwords',
+      rightValue: 'Pure mathematical proof',
+    },
+    {
+      label: 'Oversight',
+      leftValue: 'Human oversight and regulations',
+      rightValue: 'Economic incentives aligned with honesty',
+    },
+    {
+      label: 'Trust Model',
+      leftValue: '"Trust us, we\'re a bank"',
+      rightValue: '"Don\'t trust us, verify everything yourself"',
+    },
+  ]}
+/>
+
+<ProTip>
+  The Bitcoin network consumes a lot of energy, yes. But it's
+  securing over $800 billion in value with no banks, no armies, no governments.
+  Just math and incentives. Pretty efficient when you think about it.
+</ProTip>
+
+</Step>
+
+<Step id="step-4" title="Digital Scarcity Achieved" type="content">
+
+# Digital Scarcity
+
+Bitcoin achieved something that seems impossible event today: **truly scarce digital assets**.
+
+Before Bitcoin, digital scarcity was an oxymoron. Like saying "unique copy" or "original photocopy." Digital meant infinite copies.
+
+But Bitcoin cracked the code.
+
+## The 21 Million Rule
+
+Satoshi hardcoded a rule into Bitcoin: only 21 million coins will ever exist. Period. Full stop. No exceptions.
+
+This isn't a policy that can be changed by a vote or a CEO's decision. It's baked into the mathematical DNA of Bitcoin itself.
+
+<KeyConcept title="True Digital Scarcity">
+  For the first time in human history, we have a digital asset that cannot be
+  copied, forged, or inflated away. Every Bitcoin is accounted for, and everyone
+  can verify the total supply.
+</KeyConcept>
+
+## Why Bitcoin Can't Be Counterfeited
+
+**You Can't Just Edit Your Balance**  
+Try to change your Bitcoin balance? The network will reject it faster than you can say "fraud." Everyone has a copy of the ledger.
+
+**Mathematical Proof Required**  
+Every transaction needs cryptographic proof. You can't fake ownership, the math doesn't lie.
+
+**Global Verification**  
+Anyone, anywhere, can audit Bitcoin's entire supply. Try auditing the Federal Reserve's books.
+
+**Algorithmic Enforcement**  
+No human can override Bitcoin's scarcity rules. The algorithm is in charge.
+
+## The Comparison That Changes Everything
+
+<Comparison
+  title="Money Systems Comparison"
+  leftTitle="Traditional Money (US Dollar)"
+  rightTitle="Bitcoin"
+  items={[
+    {
+      label: 'Supply',
+      leftValue: 'Whatever the government decides',
+      rightValue: 'Fixed at 21 million forever',
+    },
+    {
+      label: 'Control',
+      leftValue: 'Federal Reserve and politicians',
+      rightValue: 'Mathematical algorithm',
+    },
+    {
+      label: 'Verification',
+      leftValue: '"Trust us"',
+      rightValue: 'Anyone can audit everything',
+    },
+    {
+      label: 'History',
+      leftValue: 'Devalued by ~96% since 1913',
+      rightValue: 'Up ~100,000,000% since 2010',
+    },
+  ]}
+/>
+
+<RealWorldExample>
+**The Venezuela Story**
+
+In 2018, Venezuela's government printed so much money that inflation reached 1,000,000%. People's life savings became worthless overnight.
+
+Meanwhile, Bitcoin's supply schedule never changed. Not once. Not ever.
+
+This is the power of programmable scarcity.
+
+</RealWorldExample>
+
+**Historic Achievement**: For the first time since gold, we have money that no government, corporation, or individual can inflate away.
+
+The digital age finally has digital gold.
+
+</Step>
+
+<Step id="step-5" title="Bitcoin's Beautiful Limitations" type="checkpoint">
+
+# But Bitcoin Has Limitations
+
+Bitcoin solved the impossible problem of digital scarcity. But like any breakthrough, it opened new questions and revealed new possibilities.
+
+## What Bitcoin Absolutely Nails
+
+**Store of Value (Digital Gold)**  
+Bitcoin can't be inflated, confiscated easily, or counterfeited. It's gold for the digital age.
+
+**Peer-to-Peer Payments**  
+Send value anywhere on Earth, no banks needed. From New York to Nigeria in minutes, not days.
+
+**Censorship Resistance**  
+No government, corporation, or individual can stop valid Bitcoin transactions. Mathematical neutrality.
+
+**Radical Transparency**  
+Every transaction is public and verifiable. The most auditable money system ever created.
+
+## What Bitcoin Wasn't Designed For
+
+Satoshi designed Bitcoin to do one thing incredibly well: be digital money. But this focus means some limitations:
+
+**Simple Transactions Only**  
+Bitcoin can send value from A to B, but can't program complex agreements or conditions.
+
+**10-Minute Settlement**  
+Perfect for large transfers, but buying coffee takes longer than drinking it.
+
+**High Value Transfers**  
+Transaction fees make sense for moving thousands of dollars, not buying a candy bar.
+
+**Public by Design**  
+Every transaction is visible to everyone. Privacy requires extra tools.
+
+<ThinkAboutIt>
+  Bitcoin chose security and simplicity over
+  flexibility. But what if someone wanted the security of Bitcoin with the
+  flexibility of a computer program?
+</ThinkAboutIt>
+
+## The Question That Opened New Doors
+
+_"Bitcoin taught us that digital scarcity was possible. But what if we wanted more than just digital money? What if we wanted programmable money?"_
+
+This question would birth the next revolution: **smart contracts**.
+
+Imagine money that could think, make decisions, and execute agreements automatically. Money that could lend itself out, vote in elections, or split restaurant bills based on who ate what.
+
+**Welcome to Ethereum and the World of Smart Contracts.**
+
+But that's our next adventure.
+
+<KeyTakeaway>
+  Bitcoin proved digital scarcity works. It solved the double-spending problem
+  and created the foundation for everything that came next. Not bad for a 9-page
+  paper by a mysterious stranger.
+</KeyTakeaway>
+
+</Step>

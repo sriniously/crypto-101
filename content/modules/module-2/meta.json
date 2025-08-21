@@ -1,0 +1,37 @@
+{
+  "id": "module-2",
+  "number": 2,
+  "title": "Digital Scarcity and Tokens",
+  "subtitle": "Creating Money Out of Thin Air (Responsibly)",
+  "description": "Understanding how digital scarcity works and exploring different token standards",
+  "track": "foundation",
+  "objectives": [
+    "Understand how digital scarcity works",
+    "Grasp different token standards through simulations",
+    "Learn token economics fundamentals"
+  ],
+  "duration": 45,
+  "prerequisites": ["module-1"],
+  "lessons": [
+    {
+      "id": "lesson-2-1",
+      "number": "2.1",
+      "title": "Digital Scarcity in Practice",
+      "description": "Create limited vs unlimited digital assets to understand scarcity mechanisms",
+      "duration": 15,
+      "objectives": [
+        "Create limited vs unlimited digital assets simulation",
+        "Understand scarcity mechanisms: fixed supply, burning, halving events",
+        "Compare digital scarcity to physical scarcity"
+      ],
+      "simulations": [
+        {
+          "id": "sim-2-1-1",
+          "title": "Token Scarcity Simulator",
+          "component": "TokenScarcitySimulator",
+          "description": "Compare digital scarcity to physical scarcity through interactive simulation"
+        }
+      ]
+    }
+  ]
+}

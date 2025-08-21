@@ -1,0 +1,792 @@
+<Step id="step-0" title="What If Money Could Think?" type="content">
+
+# What If Money Could Think?
+
+_"Bitcoin gave us digital money. But what if we could program that money to follow rules automatically?"_
+
+Let's imagine a scenario. It's Friday night, you're splitting dinner with friends, and instead of doing mental math and awkward Venmo requests, your money automatically divides the bill based on who ordered what. No apps, no hassle, no "I'll pay you back later."
+
+Or imagine never missing rent again because your money pays it automatically on the first of each month. Or having your investments automatically rebalance themselves when markets shift.
+
+This is **programmable money**, and it's happening right now.
+
+<RealWorldExample>
+**The Traditional Escrow Problem**
+
+You want to buy a rare guitar from someone online for $2,000. They want payment first. You want the guitar first. Neither trusts the other.
+
+**Old Solution**: Find an escrow company, pay fees, wait days for verification, hope they're honest.
+
+**Smart Contract Solution**: Lock $2,000 in code that automatically releases payment when guitar delivery is confirmed. No middleman, no trust needed, no extra fees.
+
+</RealWorldExample>
+
+Bitcoin proved digital scarcity works, but it only does one thing: transfer value from A to B. What if we could teach our money to be smarter?
+
+What if your digital money could:
+
+- **Make decisions** based on real-world events
+- **Follow complex rules** you set in advance
+- **Interact with other programs** seamlessly
+- **Execute agreements** without lawyers or banks
+- **Earn yield** while you sleep
+- **Vote on your behalf** in organizations you care about
+
+<KeyConcept title="Programmable Money">
+  Smart contracts are like giving your money a brain. Instead of just sitting in
+  your wallet, your money can follow instructions, make decisions, and take
+  actions automatically.
+</KeyConcept>
+
+Welcome to the world of **Smart Contracts** and the applications they make possible.
+
+</Step>
+
+<Step id="step-1" title="Your First Smart Contract" type="content">
+
+# Agreements in Code
+
+Remember the last time you made a deal with someone and worried they might not hold up their end? Smart contracts solve this problem elegantly.
+
+Think of a smart contract as a **super-honest vending machine** that never breaks and always keeps its promises.
+
+<Comparison
+  title="Contract Models"
+  leftTitle="Traditional Contract"
+  rightTitle="Smart Contract"
+  items={[
+    {
+      label: 'Agreement',
+      leftValue: '"I\'ll pay you $500 if you deliver the goods"',
+      rightValue: '"IF goods_delivered == true, THEN pay_500_dollars()"',
+    },
+    {
+      label: 'Enforcement',
+      leftValue: 'Shake hands and hope for the best',
+      rightValue: 'Code executes automatically when conditions are met',
+    },
+    {
+      label: 'Trust Required',
+      leftValue: 'Must trust the other party',
+      rightValue: 'No trust needed, math enforces the deal',
+    },
+    {
+      label: 'Dispute Resolution',
+      leftValue: 'Hire lawyers, go to court, wait months',
+      rightValue: 'Code IS the law, resolution in seconds',
+    },
+  ]}
+/>
+
+But unlike a simple vending machine that just dispenses snacks, smart contracts can handle incredibly complex agreements.
+
+## The Properties
+
+**Automatic Execution**  
+Once deployed, smart contracts run without human intervention. No one can stop them, change them, or "forget" to execute them.
+
+**Trustless Interactions**  
+You don't need to trust the other party or any intermediary. You only need to trust mathematics.
+
+**Radical Transparency**  
+Anyone can read the contract code and verify exactly what it does before interacting with it.
+
+**Immutable Rules**  
+Once deployed, the rules can't be changed. What you see is exactly what you get, forever.
+
+**Global and Permissionless**  
+Smart contracts work the same way for everyone, everywhere, without asking anyone's permission.
+
+<CodeExample title="Smart Contract Basics" language="solidity">
+{`// A Simple Smart Contract (Solidity)
+contract SimpleEscrow {
+    address public buyer;
+    address public seller;
+    uint256 public amount;
+    bool public goodsDelivered = false;
+    
+    // Constructor: Sets up the escrow when deployed
+    constructor(address _seller) payable {
+        buyer = msg.sender;       // Person who deployed the contract
+        seller = _seller;         // Seller's address
+        amount = msg.value;       // Money sent with deployment
+    }
+    
+    // Seller calls this when goods are delivered
+    function confirmDelivery() public {
+        require(msg.sender == seller, "Only seller can confirm");
+        goodsDelivered = true;
+    }
+    
+    // Buyer calls this to release payment after receiving goods
+    function releaseFunds() public {
+        require(msg.sender == buyer, "Only buyer can release funds");
+        require(goodsDelivered == true, "Goods must be delivered first");
+        
+        // Send money to seller automatically
+        payable(seller).transfer(amount);
+    }
+}
+
+// What this does:
+// 1. Buyer deploys contract with money locked inside
+// 2. Seller delivers goods, calls confirmDelivery()
+// 3. Buyer receives goods, calls releaseFunds()
+// 4. Money automatically goes to seller
+// 5. No banks, no middlemen, no trust needed!`}
+
+</CodeExample>
+
+<RealWorldExample>
+**The Insurance Effect**
+
+Traditional insurance claims can take weeks or months to process. Imagine flight delay insurance built as a smart contract:
+
+1. You buy insurance for your flight
+2. Smart contract monitors flight data automatically
+3. Plane delayed over 2 hours? Payment triggers instantly
+4. Money hits your wallet before you even land
+
+No claims forms, no phone calls, no waiting. Pure automation.
+
+</RealWorldExample>
+
+<ThinkAboutIt>
+  If agreements could execute themselves perfectly every time, how would that
+  change business, relationships, and society? What deals do you avoid making
+  because you don't trust the other party?
+</ThinkAboutIt>
+
+</Step>
+
+<Step id="step-2" title="DeFi: Banking Without Banks" type="simulation">
+
+# DeFi: Rebuilding Banking from Scratch
+
+_What if we could rebuild the entire financial system, but better?_
+
+Traditional banking has a problem: banks. They're slow, expensive, exclusionary, and frankly, not very innovative. Most banking hasn't changed much since the 1970s.
+
+Decentralized Finance (DeFi) asks a simple question: **What if smart contracts could do everything banks do, but faster, cheaper, and available to everyone?**
+
+<Simulation component="DeFiExplorer" />
+
+**What you just experienced:**
+
+You've just used the future of finance. Let's break down what made this possible:
+
+**Lending Without Loan Officers**  
+You earned interest by providing liquidity directly to other users. No credit checks, no paperwork, no waiting for approval from a banker having a bad day.
+
+**Instant Global Trading**  
+You swapped tokens instantly with people around the world. No stock exchanges, no trading hours, no geographical restrictions.
+
+**Yield Farming (Advanced Money Growing)**  
+You earned rewards for helping the financial system work. Instead of banks profiting from your deposits, you get the lion's share of the profits.
+
+**All Without Traditional Gatekeepers**  
+No banks, no brokers, no financial institutions needed. Just you, smart contracts, and mathematics.
+
+<KeyConcept title="The DeFi Revolution">
+  DeFi has recreated most traditional financial services: lending, borrowing,
+  trading, insurance, derivatives, but made them accessible to anyone with an
+  internet connection. This represents a $200+ billion ecosystem built entirely
+  on smart contracts.
+</KeyConcept>
+
+<RealWorldExample>
+
+Maria in the Philippines can now earn 8% annual interest on her savings using DeFi protocols, while her local bank offers 0.1%. She can also send money to her family in other countries instantly for pennies, instead of paying Western Union $15+ and waiting days.
+
+This is happening right now, to real people, around the world.
+
+</RealWorldExample>
+
+<CodeExample title="DeFi Lending Pool (Simplified)" language="solidity">
+{`// Simplified DeFi Lending Pool
+contract LendingPool {
+    mapping(address => uint256) public deposits;
+    mapping(address => uint256) public borrowed;
+    uint256 public totalDeposits;
+    uint256 public interestRate = 8; // 8% annual interest
+    
+    // Deposit money to earn interest
+    function deposit() public payable {
+        deposits[msg.sender] += msg.value;
+        totalDeposits += msg.value;
+        
+        // Give user LP tokens representing their share
+        mintLPTokens(msg.sender, msg.value);
+    }
+    
+    // Borrow money (must provide collateral)
+    function borrow(uint256 amount) public payable {
+        // Require 150% collateral (over-collateralized)
+        require(msg.value >= amount * 150 / 100, "Need more collateral");
+        require(amount <= totalDeposits, "Not enough liquidity");
+        
+        borrowed[msg.sender] += amount;
+        payable(msg.sender).transfer(amount);
+    }
+    
+    // Calculate interest earned
+    function calculateInterest(address user) public view returns (uint256) {
+        return deposits[user] * interestRate / 100;
+    }
+    
+    // Withdraw deposits + interest
+    function withdraw() public {
+        uint256 userDeposit = deposits[user];
+        uint256 interest = calculateInterest(user);
+        uint256 total = userDeposit + interest;
+        
+        deposits[user] = 0;
+        totalDeposits -= userDeposit;
+        payable(msg.sender).transfer(total);
+    }
+}
+
+// How this beats traditional banking:
+// - No credit checks for deposits
+// - Higher interest rates for savers
+// - Global access (internet connection only)
+// - Transparent: you can see exactly how it works
+// - Instant: no business hours or delays`}
+
+</CodeExample>
+
+</Step>
+
+<Step id="step-3" title="NFTs: Digital Ownership Reimagined" type="simulation">
+
+# NFTs: Finally, True Digital Ownership
+
+_For the first time in internet history, you can actually own digital things._
+
+Let me ask you something: Do you "own" your Instagram photos? Your Spotify playlists? Your Steam games? Not really. You're renting them from companies that can delete your account anytime.
+
+NFTs (Non-Fungible Tokens) change exactly that. They prove ownership of unique digital items using the same mathematical principles that secure Bitcoin.
+
+<Simulation component="NFTMintingStudio" />
+
+**Congratulations! You just created true digital ownership.**
+
+What you created has properties that were impossible before blockchain:
+
+**Provably Unique**  
+Your NFT has a mathematical fingerprint that cannot be forged or duplicated. It's like a birth certificate for digital assets.
+
+**Globally Verifiable**  
+Anyone, anywhere, can instantly verify that you own this specific digital item. No central authority needed.
+
+**Truly Transferable**  
+You can sell it, gift it, or trade it to anyone, anywhere. Try doing that with your Netflix account.
+
+**Composable Ownership**  
+Other applications can recognize and build upon your ownership. Your NFT can unlock features across multiple platforms.
+
+<CodeExample title="NFT Smart Contract (ERC-721)" language="solidity">
+{`// Simple NFT Contract (ERC-721 Standard)
+contract MyNFT {
+    mapping(uint256 => address) public ownerOf;    // tokenId -> owner
+    mapping(address => uint256) public balanceOf;  // owner -> token count
+    mapping(uint256 => string) public tokenURI;    // tokenId -> metadata
+    
+    uint256 public nextTokenId = 1;
+    
+    // Mint a new NFT
+    function mint(address to, string memory _tokenURI) public {
+        uint256 tokenId = nextTokenId;
+        
+        ownerOf[tokenId] = to;           // Assign ownership
+        balanceOf[to] += 1;              // Increase owner's count
+        tokenURI[tokenId] = _tokenURI;   // Link to metadata
+        
+        nextTokenId++;
+        
+        emit Transfer(address(0), to, tokenId); // Broadcast ownership
+    }
+    
+    // Transfer NFT to someone else
+    function transfer(address to, uint256 tokenId) public {
+        require(ownerOf[tokenId] == msg.sender, "Not your NFT!");
+        
+        ownerOf[tokenId] = to;           // Change ownership
+        balanceOf[msg.sender] -= 1;      // Decrease sender's count
+        balanceOf[to] += 1;              // Increase receiver's count
+        
+        emit Transfer(msg.sender, to, tokenId);
+    }
+    
+    // Check if address owns a specific NFT
+    function isOwner(address user, uint256 tokenId) public view returns (bool) {
+        return ownerOf[tokenId] == user;
+    }
+}
+
+// What makes this powerful:
+// - Mathematical proof of ownership
+// - Global verification (anyone can check)
+// - Transferable across platforms
+// - Impossible to counterfeit
+// - Survives even if original website goes down`}
+
+</CodeExample>
+
+## Beyond Digital Art
+
+Everyone talks about NFT art, but that's just the beginning. NFTs are revolutionizing digital ownership across every industry:
+
+<TabbedContent defaultValue="identity">
+  <TabsList>
+    <TabsTrigger value="identity">Digital Identity</TabsTrigger>
+    <TabsTrigger value="gaming">Gaming</TabsTrigger>
+    <TabsTrigger value="access">Access & Membership</TabsTrigger>
+    <TabsTrigger value="credentials">Credentials</TabsTrigger>
+  </TabsList>
+
+<TabsContent value="identity">
+  **Your Digital Self**: Ethereum Name Service (.eth addresses) lets you own
+  your identity across the internet. Instead of remembering wallet addresses,
+  people can send money to "yourname.eth".
+</TabsContent>
+
+<TabsContent value="gaming">
+  **True Gaming Assets**: Imagine owning a sword in one game that you can use in
+  another, or selling rare items you earned to other players. No more losing
+  everything when a game shuts down.
+</TabsContent>
+
+<TabsContent value="access">
+  **Membership Revolution**: NFTs can be keys to exclusive communities, events,
+  or content. Own the NFT, get the access. Transfer the NFT, transfer the access
+  rights.
+</TabsContent>
+
+  <TabsContent value="credentials">
+    **Unforgeable Certificates**: Imagine diplomas, certifications, or
+    achievements that can never be faked or lost. They live on the blockchain
+    forever.
+  </TabsContent>
+</TabbedContent>
+
+<RealWorldExample>
+**The Gaming Revolution**
+
+Traditional games are like digital feudalism. You spend hundreds of hours earning items, but the game company owns everything. If they ban your account or shut down the game, you lose everything.
+
+With NFT-based gaming, you truly own your items. If a game shuts down, your items survive. If you want to stop playing, you can sell your items to other players.
+
+</RealWorldExample>
+
+<ProTip>
+  The media focuses on expensive NFT art, but the real revolution is ownership
+  infrastructure. NFTs are building the foundation for a digital economy where
+  users, not platforms, own their digital lives.
+</ProTip>
+
+</Step>
+
+<Step id="step-4" title="DAOs: Organizations Without Bosses" type="simulation">
+
+# DAOs: Organizations Without Bosses
+
+_What if organizations could run themselves, with everyone having a voice and no single person in control?_
+
+Every company has the same fundamental problem: someone at the top makes all the important decisions. CEO says jump, everyone asks how high. Board of directors decides strategy behind closed doors. Shareholders get quarterly updates and hope for the best.
+
+Decentralized Autonomous Organizations (DAOs) flip this model completely. They're organizations where the community makes decisions together, and smart contracts execute those decisions automatically.
+
+<Simulation component="DAOVotingSimulator" />
+
+**You just participated in direct digital democracy.**
+
+Let's unpack why this is revolutionary:
+
+**Decentralized Governance**  
+No single person can make unilateral decisions. Every important choice goes to a community vote.
+
+**Transparent Democracy**  
+All votes are public and permanently recorded. No backroom deals or secret meetings.
+
+**Automatic Execution**  
+When a proposal passes, smart contracts execute the decision immediately. No delays, no "we'll get to it later."
+
+**Global Participation**  
+Anyone, anywhere, can contribute ideas, vote, and help govern the organization.
+
+<KeyConcept title="Governance Without Rulers">
+  DAOs represent the first time in human history that we can have large-scale
+  organizations with no central authority. Decisions emerge from the community
+  and execute automatically through code.
+</KeyConcept>
+
+## Real DAOs Managing Real Money
+
+Here are DAOs managing billions of dollars:
+
+**Uniswap DAO**: The community governs a $8+ billion trading protocol. Decisions about fees, new features, and protocol upgrades are made by token holders, not executives.
+
+**MakerDAO**: Manages the DAI stablecoin system, with billions in collateral. Community votes on interest rates, collateral types, and risk parameters.
+
+**Compound**: Users vote on which assets to support and what interest rates to charge. The protocol is governed by its users, for its users.
+
+<RealWorldExample>
+**The Corporate Revolution**
+
+Traditional corporations concentrate power at the top. Shareholders get limited voting rights on big decisions, employees get none, and customers have no voice at all.
+
+In a DAO, everyone who contributes value gets governance tokens. Contributors, users, and stakeholders all have a voice in the organization's direction. It's capitalism, but democratic.
+
+</RealWorldExample>
+
+<ThinkAboutIt>
+  What if every organization you interacted with gave you a voice in how it
+  operated? What if companies were truly accountable to their communities? What
+  if power was distributed based on contribution rather than hierarchy?
+</ThinkAboutIt>
+
+<CommonMistake>
+  "DAOs will replace all companies": Not necessarily. DAOs excel at managing
+  shared resources and making collective decisions, but they're not ideal for
+  every type of organization. The future likely includes both DAOs and
+  traditional companies.
+</CommonMistake>
+
+</Step>
+
+<Step id="step-5" title="The Web3 Revolution" type="checkpoint">
+
+# Welcome to Web3: The Ownership Internet
+
+_We've just toured the foundation of a new internet where you own your data, money, and digital identity._
+
+You've experienced a lot of stuff in the last few steps. You've interacted with:
+
+- Money that thinks and makes decisions
+- Financial systems that work without banks
+- True digital ownership of unique items
+- Organizations that govern themselves democratically
+
+This is a fundamentally different model for how the digital world works.
+
+## The Three Ages of the Internet
+
+Let's put this in perspective. The internet has evolved through distinct phases, each with its own power structure:
+
+<Timeline
+  title="The Evolution of the Internet"
+  events={[
+    {
+      period: 'Web 1.0 (1990s)',
+      title: 'The Read-Only Web',
+      description:
+        "Static websites, information consumption, 'The Information Superhighway'",
+    },
+    {
+      period: 'Web 2.0 (2000s)',
+      title: 'The Read-Write Web',
+      description:
+        'Social media, user-generated content, but platforms own everything',
+    },
+    {
+      period: 'Web 3.0 (2020s)',
+      title: 'The Read-Write-Own Web',
+      description: 'Users own their data, money, and digital identity',
+    },
+  ]}
+/>
+
+## The Ownership Revolution
+
+Here's what makes Web3 fundamentally different from everything that came before:
+
+**Self-Custody**  
+You control your assets directly. No bank can freeze your account, no platform can delete your content.
+
+**Permissionless Innovation**  
+No gatekeepers deciding who can build what. Anyone can create, deploy, and use applications.
+
+**Composable Applications**  
+Apps work together like Lego blocks. Your NFT from one app can be used in another app automatically.
+
+**Radical Transparency**  
+All activity is publicly verifiable. No secret algorithms or hidden processes.
+
+**Global by Default**  
+Same rules everywhere. No geographical restrictions or different terms of service by country.
+
+<Comparison
+  title="Web2 vs Web3 Reality"
+  leftTitle="Web2 Reality"
+  rightTitle="Web3 Alternative"
+  items={[
+    {
+      label: 'Account Control',
+      leftValue: 'Google can suspend your account and lock you out',
+      rightValue: 'You control your identity and data',
+    },
+    {
+      label: 'Money Control',
+      leftValue: 'PayPal can freeze your money with no appeal',
+      rightValue: 'You custody your own money',
+    },
+    {
+      label: 'Content Control',
+      leftValue: 'Facebook decides what you see',
+      rightValue: 'You own your content and creations',
+    },
+    {
+      label: 'Platform Rules',
+      leftValue: 'Companies can change rules anytime',
+      rightValue: 'You participate in governance decisions',
+    },
+    {
+      label: 'Infrastructure',
+      leftValue: 'Build on company-controlled platforms',
+      rightValue: 'Build on neutral, unstoppable protocols',
+    },
+  ]}
+/>
+
+## Your Web3 Toolkit
+
+To participate in this new internet, you need new tools:
+
+**Crypto Wallet**: Your identity, bank account, and key storage all in one. It's like carrying your entire digital life in your pocket.
+
+**Smart Contracts**: Your programmable agreements that execute automatically without intermediaries.
+
+**Tokens**: Your transferable units of value that can represent anything from money to voting rights to access passes.
+
+**dApps (Decentralized Applications)**: Applications that run on blockchain networks instead of company servers.
+
+<KeyTakeaway>
+"In Web2, you're the product. In Web3, you're the owner."
+
+This shift from being products to being owners is the defining characteristic of Web3. Instead of generating value for platform shareholders, you generate value for yourself and your communities.
+
+</KeyTakeaway>
+
+## The Journey Ahead
+
+What you've experienced today is just the beginning. You've seen the applications, but now we need to understand how they work.
+
+In the upcoming modules, you'll learn to:
+
+- **Understand digital scarcity** and how tokens actually work
+- **Read and write smart contracts** in Solidity
+- **Navigate DeFi protocols** like a native
+- **Design tokenomics** for sustainable systems
+- **Build and deploy** your own Web3 applications
+
+We're not just learning about Web3, we're also preparing to build it.
+
+**Welcome to your Web3 journey.** The ownership internet awaits.
+
+</Step>
+
+<Step id="step-6" title="Module 1 Assessment" type="quiz">
+
+<Quiz
+  id="lesson-1-4-quiz"
+  title="Module 1: Web3 Foundations Assessment"
+  description="Test your comprehensive understanding of blockchain fundamentals, digital money, smart contracts, and Web3 concepts"
+  questions={[
+    {
+      id: 'q1',
+      type: 'single',
+      question:
+        'What is the key innovation that smart contracts bring to digital agreements?',
+      options: [
+        {
+          id: 'a',
+          text: 'They make contracts faster to write',
+          correct: false,
+        },
+        {
+          id: 'b',
+          text: 'They execute automatically without human intervention or intermediaries',
+          correct: true,
+        },
+        {
+          id: 'c',
+          text: 'They cost less money than traditional contracts',
+          correct: false,
+        },
+        {
+          id: 'd',
+          text: 'They are written in easier language',
+          correct: false,
+        },
+      ],
+      explanation:
+        'Smart contracts automatically execute when predetermined conditions are met, eliminating the need for intermediaries and manual enforcement.',
+      points: 2,
+      difficulty: 'medium',
+    },
+    {
+      id: 'q2',
+      type: 'single',
+      question: 'What does DeFi stand for and what is its main purpose?',
+      options: [
+        {
+          id: 'a',
+          text: 'Digital Finance - making finance completely digital',
+          correct: false,
+        },
+        {
+          id: 'b',
+          text: 'Decentralized Finance - recreating financial services without traditional banks',
+          correct: true,
+        },
+        {
+          id: 'c',
+          text: 'Distributed Finance - spreading finance across many countries',
+          correct: false,
+        },
+        {
+          id: 'd',
+          text: 'Direct Finance - connecting people directly to money',
+          correct: false,
+        },
+      ],
+      explanation:
+        'DeFi (Decentralized Finance) uses smart contracts to recreate traditional financial services like lending, trading, and earning interest without centralized institutions like banks.',
+      points: 2,
+      difficulty: 'medium',
+    },
+    {
+      id: 'q3',
+      type: 'multiple',
+      question:
+        'Which of these are key properties of smart contracts? (Select all that apply)',
+      options: [
+        { id: 'a', text: 'Automatic execution', correct: true },
+        { id: 'b', text: 'Require human oversight', correct: false },
+        { id: 'c', text: 'Transparent and verifiable', correct: true },
+        { id: 'd', text: 'Immutable once deployed', correct: true },
+      ],
+      explanation:
+        "Smart contracts are automatic, transparent, and immutable. They specifically don't require human oversight - that's their key innovation.",
+      points: 3,
+      difficulty: 'medium',
+    },
+    {
+      id: 'q4',
+      type: 'single',
+      question:
+        'What makes NFTs different from regular cryptocurrencies like Bitcoin?',
+      options: [
+        { id: 'a', text: 'NFTs are more expensive', correct: false },
+        {
+          id: 'b',
+          text: 'NFTs are non-fungible, meaning each one is unique and cannot be replaced by another',
+          correct: true,
+        },
+        { id: 'c', text: 'NFTs work on different blockchains', correct: false },
+        { id: 'd', text: 'NFTs are only for digital art', correct: false },
+      ],
+      explanation:
+        'NFTs are non-fungible tokens, meaning each one is unique and irreplaceable. Unlike Bitcoin where 1 BTC = 1 BTC, each NFT has distinct properties and value.',
+      points: 2,
+      difficulty: 'medium',
+    },
+    {
+      id: 'q5',
+      type: 'single',
+      question:
+        'How do DAOs (Decentralized Autonomous Organizations) make decisions?',
+      options: [
+        { id: 'a', text: 'A CEO makes all the decisions', correct: false },
+        {
+          id: 'b',
+          text: 'Community members vote using tokens, and approved proposals execute automatically',
+          correct: true,
+        },
+        {
+          id: 'c',
+          text: 'A board of directors votes in private',
+          correct: false,
+        },
+        {
+          id: 'd',
+          text: 'Decisions are made randomly by computer',
+          correct: false,
+        },
+      ],
+      explanation:
+        'DAOs use token-based voting where community members propose and vote on decisions. When a proposal passes, smart contracts automatically execute the decision.',
+      points: 2,
+      difficulty: 'medium',
+    },
+    {
+      id: 'q6',
+      type: 'multiple',
+      question:
+        'What are the key differences between Web2 and Web3? (Select all that apply)',
+      options: [
+        {
+          id: 'a',
+          text: 'Web3 gives users ownership of their data and assets',
+          correct: true,
+        },
+        {
+          id: 'b',
+          text: 'Web3 requires permission from companies to participate',
+          correct: false,
+        },
+        {
+          id: 'c',
+          text: 'Web3 applications can work together like Lego blocks (composable)',
+          correct: true,
+        },
+        {
+          id: 'd',
+          text: 'Web3 operates without borders or geographical restrictions',
+          correct: true,
+        },
+      ],
+      explanation:
+        'Web3 is characterized by user ownership, permissionless access, composability between applications, and global operation. Web2 requires permissions from centralized platforms.',
+      points: 3,
+      difficulty: 'hard',
+    },
+    {
+      id: 'q7',
+      type: 'single',
+      question:
+        'What is the relationship between blockchain, Bitcoin, and smart contracts?',
+      options: [
+        {
+          id: 'a',
+          text: 'They are three separate, unrelated technologies',
+          correct: false,
+        },
+        {
+          id: 'b',
+          text: 'Blockchain is the foundation, Bitcoin proved digital scarcity, and smart contracts add programmability',
+          correct: true,
+        },
+        {
+          id: 'c',
+          text: 'Bitcoin contains blockchain and smart contracts',
+          correct: false,
+        },
+        {
+          id: 'd',
+          text: 'Smart contracts came before Bitcoin',
+          correct: false,
+        },
+      ],
+      explanation:
+        'Blockchain is the foundational technology, Bitcoin was the first successful application proving digital scarcity, and smart contracts add programmable logic to blockchain systems.',
+      points: 3,
+      difficulty: 'hard',
+    },
+  ]}
+  passingScore={75}
+  maxAttempts={3}
+/>
+
+</Step>
