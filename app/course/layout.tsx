@@ -111,7 +111,7 @@ export default function CourseLayout({
             collapsible={true}
             collapsedSize={0}
           >
-            <Sidebar collapsible="none" className="border-r h-full w-full">
+            <Sidebar collapsible="none" className="border-r h-full w-full pt-16">
               <SidebarContent className="h-full flex flex-col overflow-hidden">
                 <CourseNavigation />
               </SidebarContent>
